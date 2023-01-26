@@ -7,11 +7,16 @@ function timeFresh() {
   setInterval(timeFresh, 1000);
   setTimeout(timeFresh, 0);
 
+$(".saveBtn").on("click", function () {
+  // jQuery siblings - the .siblings() method allows us to search through the siblings of these elements in the DOM tree and construct a new jQuery object from the matching elements.
+  var description = $(this).siblings(".description").val();
+  // jQuery parent - The parents() is an inbuilt method in jQuery which is used to find all the parent elements related to the selected element. This parents() method in jQuery traverse all the levels up the selected element and return that all elements.
+  var time = $(this).parent().attr("id");
 
+  localStorage.setItem(time, description);
+})
 
-
-
-
+// TO DO: not saving events entered into textarea after refresh
 
 
 
