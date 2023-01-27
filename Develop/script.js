@@ -7,6 +7,8 @@ function timeFresh() {
   setInterval(timeFresh, 1000);
   setTimeout(timeFresh, 0);
 
+JSON.parse(window.localStorage.getItem('.description'));
+
 $(".saveBtn").on("click", function () {
   // jQuery siblings - the .siblings() method allows us to search through the siblings of these elements in the DOM tree and construct a new jQuery object from the matching elements.
   var description = $(this).siblings(".description").val();
@@ -14,7 +16,39 @@ $(".saveBtn").on("click", function () {
   var time = $(this).parent().attr("id");
 
   localStorage.setItem(time, description);
+
 })
+
+var today = moment();
+
+function auditTask() {
+  // get current number of hours
+  var currentDay = today.hours();
+
+  // loop over each time block
+  $('.time-block').each(function () {
+    var timeId = parseInt($(this).attr('id').split("hour")[1]);
+
+    // if the time Id attribute is before the current hour, add the past class
+    if (timeId < currentDay) {
+      $(this).addClass('past');
+    } // if the time Id attribute is equal to the current hour, remove the past and future classes and add the present class
+    else if (timeId === currentDay) {
+      $(this).removeClass('past');
+      $(this).removeClass('future');
+      $(this).addClass('present');
+    } // If the time Id attribute is greater than the current time, remove the past and present classes and add the future class
+    else {
+      $(this).removeClass('past');
+      $(this).removeClass('present');
+      $(this).addClass('future');
+    }
+  });
+}
+
+// Call the audit task function
+auditTask();
+
 
 // TO DO: not saving events entered into textarea after refresh
 
