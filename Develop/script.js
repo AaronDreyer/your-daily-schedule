@@ -18,7 +18,31 @@ $(".saveBtn").on("click", function () {
 
 })
 
+function timeBlock () {
 
+  var currentTime = dayjs().hour();
+
+  $(".time-block").each(function () {
+    var timeBlock = parseInt($(this).attr("id").split("hour")[1]);
+
+    if (timeBlock < currentTime) {
+        $(this).removeClass("future");
+        $(this).removeClass("present");
+        $(this).addClass("past");
+    }
+    else if (timeBlock === currentTime) {
+        $(this).removeClass("past");
+        $(this).removeClass("future");
+        $(this).addClass("present");
+    }
+    else {
+        $(this).removeClass("present");
+        $(this).removeClass("past");
+        $(this).addClass("future");
+
+    }
+})
+}
 
 
 // TO DO: not saving events entered into textarea after refresh
