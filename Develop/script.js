@@ -1,13 +1,51 @@
-function timeFresh() { 
-var reformatDate = dayjs().format('dddd MMM D YYYY');
-$('#currentDay').text(reformatDate);
+// function timeFresh() { 
+// var reformatDate = dayjs().format('dddd MMM D YYYY');
+// $('#currentDay').text(reformatDate);
 
-}
+// }
   
-  setInterval(timeFresh, 1000);
-  setTimeout(timeFresh, 0);
+//   setInterval(timeFresh, 1000);
+//   setTimeout(timeFresh, 0);
 
-JSON.parse(window.localStorage.getItem('.description'));
+var currentDay = $('#currentDay');
+
+function displayTime() {
+    var rightNow = dayjs().format('dddd MMM DD, YYYY');
+    currentDay.text(rightNow);
+}
+
+displayTime();
+setInterval(displayTime, 1000);
+
+var currentHour = parseInt(dayjs().hour());
+
+function colorCode() {
+    $(".time-block").each(function () {
+    var currentBlock = parseInt($(this).attr("id").split("-")[1]);
+    console.log("currentHour " + currentHour)
+    console.log("currentBlock " + currentBlock)
+
+    if (currentBlock < currentHour) {
+        console.log($(this).attr("class"))
+        $(this).addClass("past");
+        console.log($(this).attr("class"))
+        console.log(currentBlock < currentHour)
+        console.log("past")
+    }
+    else if (currentBlock == currentHour) {
+        $(this).addClass("present");
+        console.log(currentBlock == currentHour)
+        console.log("present")
+    }
+    else {
+        $(this).addClass("future");
+        console.log(currentBlock > currentHour)
+        console.log("future")
+    }
+    })
+}
+
+colorCode();
 
 $(".saveBtn").on("click", function () {
   // jQuery siblings - the .siblings() method allows us to search through the siblings of these elements in the DOM tree and construct a new jQuery object from the matching elements.
@@ -18,10 +56,6 @@ $(".saveBtn").on("click", function () {
   localStorage.setItem(time, description);
 
 })
-
-
-
-
 
 // TO DO: not saving events entered into textarea after refresh
 
