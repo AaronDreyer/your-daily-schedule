@@ -1,15 +1,16 @@
+// 
 var currentDay = $('#currentDay');
-
+// 
 function displayTime() {
     var rightNow = dayjs().format('dddd MMM DD, YYYY');
     currentDay.text(rightNow);
 }
-
+// 
 displayTime();
 setInterval(displayTime, 1000);
 
 var currentHour = dayjs().hour();
-
+// 
 function colorCode() {
     $(".time-block").each(function () {
     var currentBlock = $(this).attr("id").split("-")[1];
@@ -27,9 +28,9 @@ function colorCode() {
     }
     })
 }
-
+// 
 colorCode();
-
+// 
 $(".saveBtn").on("click", function () {
   // jQuery siblings - the .siblings() method allows us to search through the siblings of these elements in the DOM tree and construct a new jQuery object from the matching elements.
   var description = $(this).siblings(".description").val();
@@ -38,7 +39,7 @@ $(".saveBtn").on("click", function () {
 
   localStorage.setItem(time, description);
 })
-
+// 
 $("#hour-09 .description").val(localStorage.getItem("hour-09"));
 $("#hour-10 .description").val(localStorage.getItem("hour-10"));
 $("#hour-11 .description").val(localStorage.getItem("hour-11"));
