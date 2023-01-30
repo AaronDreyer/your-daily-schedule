@@ -38,22 +38,27 @@
       </div>
 
       <div class="col-12 text-center">
+        <!-- id for the clock at the top of page -->
+        <!-- Used bootstrap to apply bottom-border and padding to style more closely to mock-up -->
       <p id="currentDay" class="lead border-bottom border-5 border-dark pb-3"></p>
       </div>
 
     </header>
   </div>
     <div class="container-fluid px-5">
-      <!--  -->
+      <!-- This is where the hour is referenced for each time block -->
+      <!-- Huge problem I had was forgetting to remove the preset past, present and future in the html which affected the javascript -->
       <div id="hour-09" class="row time-block">
         <div class="col-2 col-md-1 hour text-center py-3">9AM</div>
+        <!-- This is where the text can be entered into the test field -->
         <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
+        <!-- Save button to save text to local storage -->
         <button class="btn saveBtn col-2 col-md-1" aria-label="save">
           <i class="fas fa-save" aria-hidden="true"></i>
         </button>
       </div>
 
-      <!--  -->
+    
       <div id="hour-10" class="row time-block">
         <div class="col-2 col-md-1 hour text-center py-3">10AM</div>
         <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
@@ -62,7 +67,7 @@
         </button>
       </div>
 
-      <!--  -->
+
       <div id="hour-11" class="row time-block">
         <div class="col-2 col-md-1 hour text-center py-3">11AM</div>
         <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
