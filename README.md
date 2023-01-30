@@ -14,7 +14,7 @@ This is a workday scheduler that allows the user to see the current local time a
 
 ## Link
 
-[Link to deployed website]()
+[Link to deployed website](https://aarondreyer.github.io/your-daily-schedule/)
 
 [Link to Repository](https://github.com/AaronDreyer/your-daily-schedule)
 
